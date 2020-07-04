@@ -30,5 +30,13 @@ if(isset($_SESSION['user'])){
 }else{
    
     include_once 'views/menu/login.php';
+    
+elseif(isset($_POST['usu']) && isset($_POST['password'])){
+    $userForm =$_POST['usu'];
+    $passForm =$_POST['password'];
+    if($user->userExist($userForm,$passForm)){
+       $userSession->setCurrentUser($userForm);
+       $user->setUser($userForm);
+        $app = new App();
 }
 ?>
